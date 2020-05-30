@@ -3,8 +3,8 @@
 const express = require('express')
 const router = express.Router();
 
-// require XXX.js models:
-const XXX = require('../models/XXX.js')
+// require user.js models:
+const user = require('../models/user.js')
 
 // Create a router for the app and export the router at the end of this file
 
