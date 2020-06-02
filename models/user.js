@@ -91,7 +91,7 @@ module.exports = function (sequelize, DataTypes) {
   User.associate = function (models) {
     // Associating User with Client
     // When an User is deleted, also delete any associated Clients (would need a way to reassign clients instead of deletion...)
-    User.hasMany(models.Client, {
+    User.hasMany(models.Clients, {
       onDelete: "cascade"
     });
   };
