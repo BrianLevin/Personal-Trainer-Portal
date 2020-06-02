@@ -3,28 +3,17 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function (app) {
-  // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function (req, res) {
-    res.json(req.user);
-  });
+  // // Using the passport.authenticate middleware with our local strategy.
+  // // If the user has valid login credentials, send them to the members page.
+  // // Otherwise the user will be sent an error
+  // app.post("/api/login", passport.authenticate("local"), function (req, res) {
+  //   res.json(req.user);
+  // });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", function (req, res) {
-    db.User.create({
-      email: req.body.email,
-      password: req.body.password
-    })
-      .then(function () {
-        res.redirect(307, "/api/login");
-      })
-      .catch(function (err) {
-        res.status(401).json(err);
-      });
-  });
+
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
@@ -46,13 +35,80 @@ module.exports = function (app) {
       });
     }
   });
+
+
+  // ------ USER API ROUTES
+  // need GET route to readall users
+
+  app.get("/api/users", function (req, res) {
+    db.User.findAll({}).then(function (dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  // need POST new user route (takes in a jquery JSON object and uses users model )
+  app.post("/api/signup", function (req, res) {
+    // console.log for testing
+    console.log(req.body);
+    // create the user
+    db.User.create({
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password,
+      // AJAX call must define isTrainer as true or false
+      isTrainer: req.body.isTrainer,
+      // We need to determine the trainerId by doing a GET request for a list of all trainers when we utilize this functionality for multiple trainers. for now it should default to Brian
+      // trainer_Id: req.body.trainerId,
+    })
+      .then(function (dbUser) {
+        // temporary response
+        res.json(dbUser);
+        // ideal response is a redirect
+        // res.redirect(307, "/api/login");
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
+  });
+
+  // Route to delete a user (Caution!)
+  app.delete("/api/users/:id", function (req, res) {
+    db.User.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+
+  // Route to update a User
+  app.put("/api/user/:id", function (req, res) {
+    console.log(req.body)
+    db.User.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbUser) {
+        console.log(dbUser)
+        res.json(dbUser);
+      });
+  });
+
+  // ------ CLIENTS API ROUTES
   // need GET route to readall clients
-
-  // need POST new client route (takes in a jquery JSON object and uses users model and client model)
-
+  // need POST new client route (takes in a jquery JSON object and uses Client model)
   // need PUT client route for updating a client
-
   // need DELETE client route for deleting a client
+
+
+
+
+  // ------ CLIENT LOG API ROUTES
 
 
 

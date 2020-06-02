@@ -40,12 +40,11 @@ module.exports = function (sequelize, DataTypes) {
 
   User.associate = function (models) {
     // Associating User with Client
-    // When an User is deleted, also delete any associated Clients (would need a way to prevent client deletion...)
+    // When an User is deleted, also delete any associated Clients (would need a way to reassign clients instead of deletion...)
     User.hasMany(models.Client, {
       onDelete: "cascade"
     });
   };
-
 
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function (password) {
@@ -58,3 +57,14 @@ module.exports = function (sequelize, DataTypes) {
   });
   return User;
 };
+
+// model schematic for AJAX object
+
+// model = {
+//   firstName: "",
+//   lastName: "",
+//   email: "",
+//   password: "",
+//   isTrainer: booleam,
+//   trainer_Id: #,
+// }

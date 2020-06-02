@@ -17,6 +17,7 @@ module.exports = function (app) {
   });
 
   app.get("/client/:id", function (req, res) {
+    // this code could be incorrect.. 
     db.Clients.readAll({}).then((res) => {
       res.render("client", { client: res });
     })
