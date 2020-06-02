@@ -23,5 +23,7 @@ module.exports = function (app) {
     // we will need to pass a second parameter eventually
 
   });
-
+  app.get("/add-client", function (req, res) {
+    res.render("add-client");
+  })
 };
