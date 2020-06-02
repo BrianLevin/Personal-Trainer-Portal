@@ -88,6 +88,36 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
+  var Plans = sequelize.define("Plans", {
+    Age: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    Gender: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Plan_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Workouts: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+  });
+  var Client_log = sequelize.define("Client_log", {
+    client_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    session_note: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+  });
+
+
   User.associate = function (models) {
     // Associating User with Client
     // When an User is deleted, also delete any associated Clients (would need a way to reassign clients instead of deletion...)
