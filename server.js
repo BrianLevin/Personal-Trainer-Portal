@@ -32,9 +32,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-const routes = require("./controllers/controllers.js");
+// const routes = require("./controllers/controllers.js");
 
-app.use(routes);
+require("./routes/html-routes.js")(app);
+require("./routes/api-router.js")(app);
+
+// app.use(routes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
