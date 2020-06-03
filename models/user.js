@@ -38,90 +38,12 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  var Clients = sequelize.define("Clients", {
-    Age: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Gender: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    User_Weight: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    User_Height: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    phone_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Goals: {
-      type: DataTypes.STRING
-    },
-    Injuries: {
-      type: DataTypes.STRING,
-      allowNull: False
-    },
-    Medical_Conditions: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    Diet: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    History: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    Plan_type: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-  });
-
-  var Plans = sequelize.define("Plans", {
-    Age: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Gender: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    Plan_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    Workouts: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-  });
-  var Client_log = sequelize.define("Client_log", {
-    client_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    session_note: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-  });
 
 
   User.associate = function (models) {
     // Associating User with Client
     // When an User is deleted, also delete any associated Clients (would need a way to reassign clients instead of deletion...)
-    User.hasMany(models.Clients, {
+    User.hasMany(models.Client, {
       onDelete: "cascade"
     });
   };

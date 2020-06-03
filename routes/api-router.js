@@ -72,6 +72,7 @@ module.exports = function (app) {
       });
   });
 
+
   // Route to delete a user (Caution!)
   app.delete("/api/users/:id", function (req, res) {
     db.User.destroy({
@@ -101,15 +102,171 @@ module.exports = function (app) {
 
   // ------ CLIENTS API ROUTES
   // need GET route to readall clients
+  app.get("/api/clients", function (req, res) {
+    db.Clients.findAll({}).then(function (dbClients) {
+      res.json(dbClients);
+    });
+  });
+
   // need POST new client route (takes in a jquery JSON object and uses Client model)
+  app.post("/api/submit-client", function (req, res) {
+    // console.log for testing
+    console.log(req.body);
+    // create the user
+    db.Clients.create({
+      Age: req.body.Age,
+      Gender: req.body.Gender,
+      User_Weight: req.body.User_Weight,
+      User_Height: req.body.User_Height,
+      phone_number: req.body.phone_number,
+      Goals: req.body.Goals,
+      Injuries: req.body.Injuries,
+      Medical_Conditions: req.body.Medical_Conditions,
+      Diet: req.body.Diet,
+      History: req.body.History,
+      Plan_type: req.body.Plan_type,
+      user_id: req.body.user_id,
+    })
+      .then(function (dbClients) {
+        // temporary response
+        res.json(dbClients);
+        // ideal response is a redirect
+        // res.redirect(307, "/api/login");
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
+  });
   // need PUT client route for updating a client
+  app.put("/api/Clients/:id", function (req, res) {
+    console.log(req.body)
+    db.Clients.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbClients) {
+        console.log(dbClients)
+        res.json(dbClients);
+      });
+  });
+
   // need DELETE client route for deleting a client
+  app.delete("/api/Clients/:id", function (req, res) {
+    db.Clients.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbClients) {
+      res.json(dbClients);
+    });
+  });
+
+  // -------- PLANS API ROUTES
+  app.get("/api/Plans", function (req, res) {
+    db.Plans.findAll({}).then(function (dbPlans) {
+      res.json(dbPlans);
+    });
+  });
 
 
 
+  app.post("/api/submit-plan", function (req, res) {
+    // console.log for testing
+    console.log(req.body);
+    // create the user
+    db.Clients.create({
+      Plan_type: req.body.Plan_type,
+      Workouts: req.body.Workouts,
+    })
+      .then(function (dbPlans) {
+        // temporary response
+        res.json(dbPlans);
+        // ideal response is a redirect
+        // res.redirect(307, "/api/login");
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
+  });
+
+  app.put("/api/Plans/:id", function (req, res) {
+    console.log(req.body)
+    db.Plans.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbPlans) {
+        console.log(dbPlans)
+        res.json(dbPlans);
+      });
+  });
+
+  app.delete("/api/Clients/:id", function (req, res) {
+    db.Plans.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbPlans) {
+      res.json(dbPlans);
+    });
+  });
 
   // ------ CLIENT LOG API ROUTES
 
+  app.get("/api/Client_log", function (req, res) {
+    db.Client_log.findAll({}).then(function (dbClient_log) {
+      res.json(dbClient_log);
+    });
+  });
+
+
+
+  app.post("/api/submit-client-log", function (req, res) {
+    // console.log for testing
+    console.log(req.body);
+    // create the user
+    db.Clients.create({
+      client_id: req.body.client_id,
+      session_note: req.body.session_note,
+    })
+      .then(function (dbPlans) {
+        // temporary response
+        res.json(dbClient_log);
+        // ideal response is a redirect
+        // res.redirect(307, "/api/login");
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
+  });
+
+  app.put("/api/Client_log/:id", function (req, res) {
+    console.log(req.body)
+    db.Plans.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbClient_log) {
+        console.log(dbClient_log)
+        res.json(dbClient_log);
+      });
+  });
+
+  app.delete("/api/Client_log/:id", function (req, res) {
+    db.Client_log.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (Client_log) {
+      res.json(Client_log);
+    });
+  });
 
 
 };
