@@ -38,8 +38,8 @@ module.exports = function (app) {
 
 
   // ------ USER API ROUTES
-  // need GET route to readall users
 
+  // GET route to readall users
   app.get("/api/users", function (req, res) {
     db.User.findAll({}).then(function (dbUser) {
       res.json(dbUser);
@@ -92,7 +92,7 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }).then(function (dbUser) {
         console.log(dbUser)
@@ -101,14 +101,15 @@ module.exports = function (app) {
   });
 
   // ------ CLIENTS API ROUTES
-  // need GET route to readall clients
+
+  // GET route to readall clients
   app.get("/api/clients", function (req, res) {
     db.Client.findAll({}).then(function (dbClients) {
       res.json(dbClients);
     });
   });
 
-  // need POST new client route (takes in a jquery JSON object and uses Client model)
+  // route to POST new client (takes in a jquery JSON object and uses Client model)
   app.post("/api/submit-client", function (req, res) {
     // console.log for testing
     console.log(req.body);
@@ -137,14 +138,14 @@ module.exports = function (app) {
       });
   });
 
-  // need PUT client route for updating a client
-  app.put("/api/Clients/:id", function (req, res) {
+  // PUT client route for updating a client
+  app.put("/api/clients/:id", function (req, res) {
     console.log(req.body)
     db.Client.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }).then(function (dbClients) {
         console.log(dbClients)
@@ -153,7 +154,7 @@ module.exports = function (app) {
   });
 
   // need DELETE client route for deleting a client
-  app.delete("/api/Clients/:id", function (req, res) {
+  app.delete("/api/clients/:id", function (req, res) {
     db.Client.destroy({
       where: {
         id: req.params.id
@@ -164,7 +165,7 @@ module.exports = function (app) {
   });
 
   // -------- PLANS API ROUTES
-  app.get("/api/Plans", function (req, res) {
+  app.get("/api/plans", function (req, res) {
     db.Plans.findAll({}).then(function (dbPlans) {
       res.json(dbPlans);
     });
@@ -191,13 +192,13 @@ module.exports = function (app) {
       });
   });
 
-  app.put("/api/Plans/:id", function (req, res) {
+  app.put("/api/plans/:id", function (req, res) {
     console.log(req.body)
     db.Plans.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }).then(function (dbPlans) {
         console.log(dbPlans)
@@ -205,7 +206,7 @@ module.exports = function (app) {
       });
   });
 
-  app.delete("/api/Clients/:id", function (req, res) {
+  app.delete("/api/plans/:id", function (req, res) {
     db.Plans.destroy({
       where: {
         id: req.params.id
@@ -217,13 +218,11 @@ module.exports = function (app) {
 
   // ------ CLIENT LOG API ROUTES
 
-  app.get("/api/Client_log", function (req, res) {
+  app.get("/api/client_log", function (req, res) {
     db.Client_log.findAll({}).then(function (dbClient_log) {
       res.json(dbClient_log);
     });
   });
-
-
 
   app.post("/api/submit-client-log", function (req, res) {
     // console.log for testing
@@ -233,7 +232,7 @@ module.exports = function (app) {
       client_id: req.body.client_id,
       session_note: req.body.session_note,
     })
-      .then(function (dbPlans) {
+      .then(function (dbClient_log) {
         // temporary response
         res.json(dbClient_log);
         // ideal response is a redirect
@@ -244,13 +243,13 @@ module.exports = function (app) {
       });
   });
 
-  app.put("/api/Client_log/:id", function (req, res) {
+  app.put("/api/client_log/:id", function (req, res) {
     console.log(req.body)
     db.Plans.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }).then(function (dbClient_log) {
         console.log(dbClient_log)
