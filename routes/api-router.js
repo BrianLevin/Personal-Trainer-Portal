@@ -103,7 +103,7 @@ module.exports = function (app) {
   // ------ CLIENTS API ROUTES
   // need GET route to readall clients
   app.get("/api/clients", function (req, res) {
-    db.Clients.findAll({}).then(function (dbClients) {
+    db.Client.findAll({}).then(function (dbClients) {
       res.json(dbClients);
     });
   });
@@ -113,34 +113,34 @@ module.exports = function (app) {
     // console.log for testing
     console.log(req.body);
     // create the user
-    db.Clients.create({
-      Age: req.body.Age,
-      Gender: req.body.Gender,
-      User_Weight: req.body.User_Weight,
-      User_Height: req.body.User_Height,
+    db.Client.create({
+      age: req.body.age,
+      gender: req.body.gender,
+      user_weight: req.body.user_weight,
+      user_height: req.body.user_height,
       phone_number: req.body.phone_number,
-      Goals: req.body.Goals,
-      Injuries: req.body.Injuries,
-      Medical_Conditions: req.body.Medical_Conditions,
-      Diet: req.body.Diet,
-      History: req.body.History,
-      Plan_type: req.body.Plan_type,
-      user_id: req.body.user_id,
+      goals: req.body.goals,
+      injuries: req.body.injuries,
+      medical_conditions: req.body.medical_conditions,
+      diet: req.body.diet,
+      history: req.body.history,
+      plan_type: req.body.plan_type,
+      UserId: req.body.user_id,
+    }).then(function (dbClients) {
+      // temporary response
+      res.json(dbClients);
+      // ideal response is a redirect
+      // res.redirect(307, "/api/login");
     })
-      .then(function (dbClients) {
-        // temporary response
-        res.json(dbClients);
-        // ideal response is a redirect
-        // res.redirect(307, "/api/login");
-      })
       .catch(function (err) {
         res.status(401).json(err);
       });
   });
+
   // need PUT client route for updating a client
   app.put("/api/Clients/:id", function (req, res) {
     console.log(req.body)
-    db.Clients.update(
+    db.Client.update(
       req.body,
       {
         where: {
@@ -154,7 +154,7 @@ module.exports = function (app) {
 
   // need DELETE client route for deleting a client
   app.delete("/api/Clients/:id", function (req, res) {
-    db.Clients.destroy({
+    db.Client.destroy({
       where: {
         id: req.params.id
       }
@@ -176,7 +176,7 @@ module.exports = function (app) {
     // console.log for testing
     console.log(req.body);
     // create the user
-    db.Clients.create({
+    db.Client.create({
       Plan_type: req.body.Plan_type,
       Workouts: req.body.Workouts,
     })
@@ -229,7 +229,7 @@ module.exports = function (app) {
     // console.log for testing
     console.log(req.body);
     // create the user
-    db.Clients.create({
+    db.Client.create({
       client_id: req.body.client_id,
       session_note: req.body.session_note,
     })

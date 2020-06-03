@@ -1,6 +1,5 @@
 module.exports = function (sequelize, DataTypes) {// var Plans = sequelize.define("Plans", {
     var Plans = sequelize.define("Plans", {
-
         Age: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -18,4 +17,6 @@ module.exports = function (sequelize, DataTypes) {// var Plans = sequelize.defin
             allowNull: false
         },
     });
+
+    return Plans;
 }
