@@ -1,92 +1,86 @@
 {{!-- form should be similar to edit client but with POST request --}}
-
-
-<div class="row">
-    <div class="col s3"></div>
-    <form class="col s6">
-        <div class="row">
-            <div class="input-field">
-                <input id="Age" type="text" class="validate">
-                <label class="active" for="Age">Age</label>
-            </div>
+<form action="/action_clients" method="post">
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Age' d="Age" type="text" class="validate">
+            <label class="active" for="Age">Age</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Gender" type="text" class="validate">
-                <label class="active" for="Gender">Gender</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Gender' id="Gender" type="text" class="validate">
+            <label class="active" for="Gender">Gender</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Weight" type="text" class="validate">
-                <label class="active" for="Weight">Weight</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Weight' id="Weight" type="text" class="validate">
+            <label class="active" for="Weight">Weight</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Height" type="text" class="validate">
-                <label class="active" for="Height">Height</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Height' id="Height" type="text" class="validate">
+            <label class="active" for="Height">Height</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Phone_Number" type="text" class="validate">
-                <label class="active" for="Phone_Number">Phone Number</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Phoe Number' id="Phone_Number" type="text" class="validate">
+            <label class="active" for="Phone_Number">Phone Number</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Goals" type="text" class="validate">
-                <label class="active" for="Goals">Goals</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Goals' id="Goals" type="text" class="validate">
+            <label class="active" for="Goals">Goals</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Injuries" type="text" class="validate">
-                <label class="active" for="Injuries">Injuries</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Injuries' id="Injuries" type="text" class="validate">
+            <label class="active" for="Injuries">Injuries</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Medical" type="text" class="validate">
-                <label class="active" for="Medical">Medical Conditions</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Medical Conditions' id="Medical" type="text" class="validate">
+            <label class="active" for="Medical">Medical Conditions</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Dier" type="text" class="validate">
-                <label class="active" for="Diet">Diet</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Diet' id="Diet" type="text" class="validate">
+            <label class="active" for="Diet">Diet</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="History" type="text" class="validate">
-                <label class="active" for="History">History</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='History' id="History" type="text" class="validate">
+            <label class="active" for="History">History</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Working_Notes" type="text" class="validate">
-                <label class="active" for="Working_Notes">Working Notes</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Working Notes' id="Working_Notes" type="text" class="validate">
+            <label class="active" for="Working_Notes">Working Notes</label>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field">
-                <input id="Plan_Type" type="text" class="validate">
-                <label class="active" for="Plan_Type">Plan Type</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input name='Plan Type' id="Plan_Type" type="text" class="validate">
+            <label class="active" for="Plan_Type">Plan Type</label>
         </div>
-    </form>
-    <div class="col s3"></div>
-</div>
+    </div>
+</form>
