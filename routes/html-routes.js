@@ -23,11 +23,13 @@ module.exports = function (app) {
     db.Client.findOne({
       where: { id: id }
     }).then((client) => {
-      res.render("edit-client", { client }); // get one client by id instead of all
+      console.log(client.dataValues)
+      // let clientInfo = client.dataValues
+      res.render("edit-client", client.dataValues); // get one client by id instead of all
     })
     // we will need to pass a second parameter eventually
-
   });
+
   app.get("/add-client", function (req, res) {
     res.render("add-client");
   })
