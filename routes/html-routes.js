@@ -7,15 +7,30 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
 
-  // renders login page
+  // Default index renders client list page for trainer accounts (this would be permission based through passport)
   app.get("/", function (req, res) {
     res.render("index");
+  });
+
+  // renders signup page
+  app.get("/sign-up", function (req, res) {
+    res.render("signup");
   })
 
-  // Renders client list page
-  app.get("/clients", function (req, res) {
-    res.render("clients");
+  // renders login page
+  app.get("/login", function (req, res) {
+    res.render("login");
+  })
+
+  app.get("/user/:id", function (req, res) {
+    db.User.findOne({
+      where: { id: req.params.id }
+    }).then((user) => {
+      console.log(user.dataValues)
+      res.render("add-client", user.dataValues);
+    })
   });
+
 
   app.get("/client/:id", function (req, res) {
     var id = req.params.id;
