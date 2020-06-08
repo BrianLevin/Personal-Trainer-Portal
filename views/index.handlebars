@@ -3,3 +3,17 @@
 {{!-- need a div that holds rows of clients --}}
 
 {{!-- Utilize Handlebars each method to generate first & last name, "sign-up" date ('created at' in database) link to view profile page  --}}
+
+<h1>Admin, list of users!</h1>
+
+<ul>
+    {{#each users}} {(!-- Utilize Taneishas cards on the html page --)} {(!---)}
+    <li>
+        {{first_name}} {{last_name}} {{email}}
+        <button class="userUpdate" data-id="{{this.id}}">Update user</button>
+        <button class="userDelete" data-id="{{this.id}}">Delete user</button>
+
+        {{!--{{this}} --}}
+    </li>
+    {{/each}}
+</ul>
