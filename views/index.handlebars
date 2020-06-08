@@ -9,10 +9,10 @@
 <ul>
     {{#each users}} {(!-- Utilize Taneishas cards on the html page --)} {(!---)}
     <li>
-        {{first_name}} {{last_name}} {{email}}
-        <button class="userUpdate" data-id="{{this.id}}">Update user</button>
-        <button class="userDelete" data-id="{{this.id}}">Delete user</button>
 
+        {{dataValues.first_name}} {{dataValues.last_name}} {{dataValues.email}}
+        <button class="userUpdate" data-id="{{dataValues.id}}">Update user</button>
+        <button class="userDelete" data-id="{{dataValues.id}}">Delete user</button>
         {{!--{{this}} --}}
     </li>
     {{/each}}
