@@ -22,6 +22,9 @@ module.exports = function (app) {
 
   // renders login page
   app.get("/login", function (req, res) {
+    if (req.user) {
+      res.redirect("https://www.google.com");
+    }
     res.render("login");
   })
 

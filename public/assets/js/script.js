@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     // Insert front-end code here:
-  
+
     const login = () => {
         $.ajax({
             method: "POST",
@@ -91,7 +91,7 @@ $(document).ready(function () {
             // user_id: 2 DEFINE THIS BASED ON CallBack
         }
     ]
-    
+
     // Need a function that runs immediately to seed the database
     function seedDb(data) {
         $.post('')
