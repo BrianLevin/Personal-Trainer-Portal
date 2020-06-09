@@ -4,16 +4,31 @@
 
 {{!-- Utilize Handlebars each method to generate first & last name, "sign-up" date ('created at' in database) link to view profile page  --}}
 
-<h1>Admin, list of users!</h1>
+<h1>Brian's Clients</h1>
 
-<ul>
-    {{#each users}} {(!-- Utilize Taneishas cards on the html page --)} {(!---)}
-    <li>
-
-        {{dataValues.first_name}} {{dataValues.last_name}} {{dataValues.email}}
-        <button class="userUpdate" data-id="{{dataValues.id}}">Update user</button>
-        <button class="userDelete" data-id="{{dataValues.id}}">Delete user</button>
-        {{!--{{this}} --}}
-    </li>
+<!-- Page Content -->
+<div class="row">
+    {{#each clients}}
+    <div class="col s4">
+        <div class="card horizontal ">
+            <div class="card-image">
+                <img src={{dataValues.client_photo}}>
+            </div>
+            <div class="card-stacked">
+                <div class="card-content ">
+                    <h4 id="name">{{dataValues.first_name}} {{dataValues.last_name}}</h4>
+                    <p id="user_id">{{dataValues.id}}</p>
+                    <p id="plan_type">{{dataValues.plan_type}}</p>
+                    <p id="phone">{{dataValues.phone_number}}</p>
+                    <p id="email">{{dataValues.email}}</p>
+                </div>
+                <div class="card-action">
+                    <a id="add-note" href="/profile/{{dataValues.id}}">View Profile</a>
+                </div>
+                <button class="userUpdate" data-id="{{dataValues.id}}">Update user</button>
+                <button class="userDelete" data-id="{{dataValues.id}}">Delete user</button>
+            </div>
+        </div>
+    </div>
     {{/each}}
-</ul>
+</div>

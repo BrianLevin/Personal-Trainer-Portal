@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         phone_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         goals: {
@@ -52,7 +52,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        Plan_name: {
+
+        plan_type: {
             type: DataTypes.STRING,
             // need to change to false eventually to attach plan_id?
             allowNull: true,

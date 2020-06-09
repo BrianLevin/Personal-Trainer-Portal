@@ -22,7 +22,7 @@ module.exports = function (app) {
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
   // Route for getting some data about our user to be used client side
@@ -58,16 +58,16 @@ module.exports = function (app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      // AJAX call must define isTrainer as true or false
+      // AJAX call can define isTrainer as true or false in the future, defaults to false
       isTrainer: req.body.isTrainer,
       // We need to determine the trainerId by doing a GET request for a list of all trainers when we utilize this functionality for multiple trainers. for now it should default to Brian
       // trainer_Id: req.body.trainerId,
     })
       .then(function (dbUser) {
         // temporary response
-        res.json(dbUser);
+        // res.json(dbUser);
         // ideal response is a redirect
-        // res.redirect(307, "/api/login");
+        res.sendStatus(200)
       })
       .catch(function (err) {
         res.status(401).json(err);
@@ -105,7 +105,7 @@ module.exports = function (app) {
   // ------ CLIENTS API ROUTES
 
   // GET route to readall clients
-  app.get("/api/clients", function (req, res) {
+  app.get("/api/client", function (req, res) {
     db.Client.findAll({}).then(function (dbClients) {
       res.json(dbClients);
     });
@@ -131,7 +131,9 @@ module.exports = function (app) {
       history: req.body.history,
       plan_type: req.body.plan_type,
       client_photo: req.body.photoUrl,
-      UserId: req.body.user_id,
+      // PRODUCTION WILL NEED TO REQUIRE REQ.USER.ID
+      UserId: req.body.user_id
+
     }).then(function (dbClients) {
       // temporary response
       res.json(dbClients);
@@ -274,3 +276,4 @@ module.exports = function (app) {
 
 
 };
+
