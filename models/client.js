@@ -1,5 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
     var Client = sequelize.define("Client", {
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        last_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         age: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -48,6 +56,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             // need to change to false eventually to attach plan_id?
             allowNull: true,
+        },
+        client_photo: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
     });
 

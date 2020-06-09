@@ -3,14 +3,6 @@ var bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    first_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
@@ -27,14 +19,13 @@ module.exports = function (sequelize, DataTypes) {
     },
     isTrainer: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
       defaultValue: false
     },
     // we're ignoring this for future trainers and clients
     trainer_Id: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      // defaultValue: 1
     },
   });
 
