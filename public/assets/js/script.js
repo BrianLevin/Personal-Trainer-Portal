@@ -115,6 +115,7 @@ $(document).ready(function () {
         data.forEach(e => {
             addClient(e.client)
         });
+
     }
 
     // create a function to take the values of the user form and post to the db 
