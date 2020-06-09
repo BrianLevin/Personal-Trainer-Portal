@@ -9,7 +9,10 @@ module.exports = function (app) {
 
   // Default index renders client list page for trainer accounts (this would be permission based through passport)
   app.get("/", function (req, res) {
-    res.render("index");
+    db.User.findAll({}).then(function (users) {
+      console.log(users)
+      res.render("index", { user: users });
+    });
   });
 
   // renders signup page
@@ -31,8 +34,21 @@ module.exports = function (app) {
     })
   });
 
+  // Gets User data and Joins to Client table
+  app.get("/profile/:id", function (req, res) {
+    db.User.findAll({
+      include: [{
+        model: db.Client,
+        where: { UserId: req.params.id }
+      }]
+    }).then((userData) => {
+      console.log(userData)
+      res.json(userData)
+      // res.render("client-profile", client.dataValues); 
+    })
+  });
 
-  app.get("/client/:id", function (req, res) {
+  app.get("/edit/client/:id", function (req, res) {
     var id = req.params.id;
     // this code could be incorrect..  //find(({id}))
     db.Client.findOne({
