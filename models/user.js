@@ -27,6 +27,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    
   });
 
   User.associate = function (models) {

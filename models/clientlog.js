@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var ClientLog = sequelize.define("Client Log", {
+    var ClientLog = sequelize.define("ClientLog", {
         client_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -14,9 +14,9 @@ module.exports = function (sequelize, DataTypes) {
     ClientLog.associate = function (models) {
         // We're saying that a Client should belong to a User
         // A Client can't be created without a User due to the foreign key constraint
-        ClientLog.belongsTo(models.User, {
+        ClientLog.belongsTo(models.Client, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
     };

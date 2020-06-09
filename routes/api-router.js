@@ -6,9 +6,9 @@ module.exports = function (app) {
   // // Using the passport.authenticate middleware with our local strategy.
   // // If the user has valid login credentials, send them to the members page.
   // // Otherwise the user will be sent an error
-  // app.post("/api/login", passport.authenticate("local"), function (req, res) {
-  //   res.json(req.user);
-  // });
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+    res.json(req.user);
+  });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
@@ -178,8 +178,8 @@ module.exports = function (app) {
     // console.log for testing
     console.log(req.body);
     // create the user
-    db.Client.create({
-      Plan_type: req.body.Plan_type,
+    db.Plans.create({
+      Plan_name: req.body.Plan_name,
       Workouts: req.body.Workouts,
     })
       .then(function (dbPlans) {
@@ -219,9 +219,9 @@ module.exports = function (app) {
 
   // ------ CLIENT LOG API ROUTES
 
-  app.get("/api/client_log", function (req, res) {
-    db.Client_log.findAll({}).then(function (dbClient_log) {
-      res.json(dbClient_log);
+  app.get("/api/ClientLog", function (req, res) {
+    db.ClientLog.findAll({}).then(function (dbClientLog) {
+      res.json(dbClientLog);
     });
   });
 
@@ -229,7 +229,7 @@ module.exports = function (app) {
     // console.log for testing
     console.log(req.body);
     // create the user
-    db.Client.create({
+    db.ClientLog.create({
       client_id: req.body.client_id,
       session_note: req.body.session_note,
     })
@@ -246,7 +246,7 @@ module.exports = function (app) {
 
   app.put("/api/client_log/:id", function (req, res) {
     console.log(req.body)
-    db.Plans.update(
+    db.ClientLog.update(
       req.body,
       {
         where: {
