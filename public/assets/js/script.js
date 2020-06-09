@@ -25,7 +25,7 @@ $(document).ready(function () {
     })
 
     // DB seed data (WORK IN PROGRESS)
-    let seedUsers = [
+    let tempUsers = [
         {
             user: {
                 email: "tjon767z@yahoo.com",
@@ -46,7 +46,7 @@ $(document).ready(function () {
                 diet: "Vegan",
                 history: "I have worked out before in my life",
                 plan_type: "Questionable",
-                // user_id: 2 DEFINE THIS BASED ON CallBack
+                user_id: 1
             }
         },
         {
@@ -69,7 +69,7 @@ $(document).ready(function () {
                 diet: "Vegan",
                 history: "never worked out ever",
                 plan_type: "Questionable",
-                // user_id: 2 DEFINE THIS BASED ON CallBack
+                user_id: 2
             }
         },
         {
@@ -92,19 +92,29 @@ $(document).ready(function () {
                 diet: "Paleo",
                 history: "UFC World Champion",
                 plan_type: "Beastmode",
-                // user_id: 2 DEFINE THIS BASED ON CallBack
+                user_id: 3
             }
         }
     ]
 
-    //TITO NEEDS TO FIX THIS SEED FUNCTION
-    //seedDb(seedUsers)
-
-    // Need a function that runs immediately to seed the database
-    function seedDb(data) {
-        register(data[0].user)
-        register(data[1].user)
-        register(data[2].user)
+    // THIS SHOULD BE COMMENTS OUT FOR PRODUCTION
+    $('#seed-users').on('click', function () {
+        seedUsers(tempUsers)
+    })
+    $('#seed-clients').on('click', function () {
+        seedClients(tempUsers)
+    })
+    // function that seeds users to database
+    function seedUsers(data) {
+        data.forEach(e => {
+            register(e.user)
+        });
+    }
+    // function that seeds clients to database
+    function seedClients(data) {
+        data.forEach(e => {
+            addClient(e.client)
+        });
     }
 
     // create a function to take the values of the user form and post to the db 
@@ -140,6 +150,18 @@ $(document).ready(function () {
     // POST new user registration to DB
     const register = (credentials) => {
         $.post('/api/signup', credentials, () => {
+
+
+            // NEED TO FIGURE OUT THIS ERROR HANDLING.. IT DOESNT WORK https://api.jquery.com/ajaxError/
+            // if (err) {
+            //     console.log('The email address already has an account tied to it')
+            // }
+            window.location.href = "/login";
+            return;
+        })
+    }
+    const addClient = (clientData) => {
+        $.post('/api/submit-client', clientData, () => {
 
 
             // NEED TO FIGURE OUT THIS ERROR HANDLING.. IT DOESNT WORK https://api.jquery.com/ajaxError/
