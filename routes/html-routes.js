@@ -34,17 +34,31 @@ module.exports = function (app) {
     })
   });
 
-  // Gets User data and Joins to Client table
+  // This was a nice experiment on joining a table in sequlize
+  // app.get("/profile/:id", function (req, res) {
+  //   db.User.findAll({
+  //     include: [{
+  //       model: db.Client,
+  //       where: { UserId: req.params.id }
+  //     }]
+  //   }).then((userData) => {
+  //     // console.log(userData[0].Clients[0].first_name)
+  //     let client = userData[0].Clients[0];
+  //     let userObj = {
+  //       id: userObj.UserId,
+  //     }
+  //     // res.render("client-profile", userData.dataValues);
+  //   })
+  // });
+
   app.get("/profile/:id", function (req, res) {
-    db.User.findAll({
-      include: [{
-        model: db.Client,
-        where: { UserId: req.params.id }
-      }]
-    }).then((userData) => {
-      console.log(userData)
-      res.json(userData)
-      // res.render("client-profile", client.dataValues); 
+    db.Client.findOne({
+      where: { id: req.params.id }
+    }).then((client) => {
+      console.log(client.dataValues)
+      res.render("client-profile", client.dataValues);
+    }).catch(() => {
+      res.status(500).send({ error: 'Client does not exist!' })
     })
   });
 
