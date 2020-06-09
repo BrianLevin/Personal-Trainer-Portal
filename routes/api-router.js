@@ -52,8 +52,6 @@ module.exports = function (app) {
     console.log(req.body);
     // create the user
     db.User.create({
-      first_name: req.body.firstName,
-      last_name: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
       // AJAX call must define isTrainer as true or false
@@ -115,6 +113,8 @@ module.exports = function (app) {
     console.log(req.body);
     // create the user
     db.Client.create({
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
       age: req.body.age,
       gender: req.body.gender,
       user_weight: req.body.user_weight,
@@ -126,6 +126,7 @@ module.exports = function (app) {
       diet: req.body.diet,
       history: req.body.history,
       plan_type: req.body.plan_type,
+      client_photo: req.body.photoUrl,
       UserId: req.body.user_id,
     }).then(function (dbClients) {
       // temporary response

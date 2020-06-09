@@ -1,32 +1,19 @@
-{{!-- insert index template --}}
+{{!-- index should be our admin page for viewing all clients as a tiled or row list --}}
 
-{{!-- Setup containers, rows and columns https://materializecss.com/grid.html --}}
+{{!-- need a div that holds rows of clients --}}
 
-{{!-- Login page --}}
+{{!-- Utilize Handlebars each method to generate first & last name, "sign-up" date ('created at' in database) link to view profile page  --}}
 
-{{!-- insert form with user/email field, password field, submit button  --}}
+<h1>Admin, list of users!</h1>
 
-<div class="row">
-    <div class="col s4">
-    </div>
-    <form id="login" class="col s4">
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="email-input" type="text" class="validate">
-                <label class="active" for="login">Email</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label class="active" for="login">Password</label>
-            </div>
-        </div>
+<ul>
+    {{#each users}} {(!-- Utilize Taneishas cards on the html page --)} {(!---)}
+    <li>
 
-        <button class="btn waves-effect waves-light" id="login" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-        </button>
-    </form>
-    <div class="col s4">
-    </div>
-</div>
+        {{dataValues.first_name}} {{dataValues.last_name}} {{dataValues.email}}
+        <button class="userUpdate" data-id="{{dataValues.id}}">Update user</button>
+        <button class="userDelete" data-id="{{dataValues.id}}">Delete user</button>
+        {{!--{{this}} --}}
+    </li>
+    {{/each}}
+</ul>

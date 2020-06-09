@@ -1,111 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Implement Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <title>Personal Trainer Portal </title>
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+
+    <script src="test.js"></script>
+    <title>PT Client Portal</title>
 </head>
 
 <body>
-    <h1>Brian's Clients</h1>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Brian's Client Portal</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="#">Add Client</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Card for Trainer Info -->
-    <div class="card text-center">
-        <div class="card-header">
-            Trainer
+
+    <!-- Client 1 -->
+    <div class="row">
+        <div class="col s4">
+            <h3 class="header">Erik Donovan</h3>
+            <div class="card horizontal ">
+                <div class="card-image">
+                    <img src="https://lorempixel.com/100/190/nature/6">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content ">
+                        <p id="user_id">User ID:</p>
+                        <p id="plan_type">Plan Type:</p>
+                        <p id="age">Age:</p>
+                        <p id="gender">Gender:</p>
+                        <p id="weight">Weight:</p>
+                        <p id="height">Height:</p>
+                        <p id="phone">Phone:</p>
+                        <p id="medical_conditions">Medical Conditions:</p>
+                    </div>
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-widthz">
+                            <li class="tab"><a class="active" href="#goals">Goals</a></li>
+                            <li class="tab"><a href="#injuries">Injuries</a></li>
+                            <li class="tab"><a href="#diet">Diet</a></li>
+                            <li class="tab"><a href="#history">History</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <div id="goals">Strong arms</div>
+                        <div id="injuries">None</div>
+                        <div id="diet">Ramen</div>
+                        <div id="history">Working out for 1 week</div>
+                    </div>
+                    <div class="card-action">
+                        <a id="add-note" href="#">Add Note</a>
+                    </div>
+                    <div class="card-action">
+                        <a id="email" href="#">Contact/Email</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 id="Trainer Name" class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        <!-- Client 2 -->
+        <div class="col s4">
+            <h3 class="header">Taneisha George</h3>
+            <div class="card horizontal ">
+                <div class="card-image">
+                    <img src="https://lorempixel.com/100/190/nature/6">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content ">
+                        <p id="user_id">User ID:</p>
+                        <p id="plan_type">Plan Type:</p>
+                        <p id="age">Age:</p>
+                        <p id="gender">Gender:</p>
+                        <p id="weight">Weight:</p>
+                        <p id="height">Height:</p>
+                        <p id="phone">Phone:</p>
+                        <p id="medical_conditions">Medical Conditions:</p>
+                    </div>
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-widthz">
+                            <li class="tab"><a class="active" href="#goals">Goals</a></li>
+                            <li class="tab"><a href="#injuries">Injuries</a></li>
+                            <li class="tab"><a href="#diet">Diet</a></li>
+                            <li class="tab"><a href="#history">History</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <div id="goals">Lose weight &amp; get abs!</div>
+                        <div id="injuries">Shin splints</div>
+                        <div id="diet">Candy!</div>
+                        <div id="history">Enjoys HIIT training and spin class</div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Add Note</a>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Contact/Email</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-footer text-muted">
-            2 days ago
+        <!-- Client 3 -->
+        <div class="col s4">
+            <h3 class="header">Tito Lopez</h3>
+            <div class="card horizontal ">
+                <div class="card-image">
+                    <img src="https://lorempixel.com/100/190/nature/6">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content ">
+                        <p id="user_id">User ID:</p>
+                        <p id="plan_type">Plan Type:</p>
+                        <p id="age">Age:</p>
+                        <p id="gender">Gender:</p>
+                        <p id="weight">Weight:</p>
+                        <p id="height">Height:</p>
+                        <p id="phone">Phone:</p>
+                        <p id="medical_conditions">Medical Conditions:</p>
+                    </div>
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-widthz">
+                            <li class="tab"><a class="active" href="#goals">Goals</a></li>
+                            <li class="tab"><a href="#injuries">Injuries</a></li>
+                            <li class="tab"><a href="#diet">Diet</a></li>
+                            <li class="tab"><a href="#history">History</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <div id="goals">More running</div>
+                        <div id="injuries">None</div>
+                        <div id="diet">Ice cream</div>
+                        <div id="history">Runner</div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Add Note</a>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Contact/Email</a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
     </div>
-
-    <!-- Cards for Client Info -->
-    <div class="card-group">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 id="Client 1 name" class="card-title">Card title</h5>
-                <p id="plan type" class="card-text">This is a wider card with supporting text below as a natural lead-in
-                    to additional
-                    content. This content is a little bit longer.</p>
-                <p id="age"></p>
-                <p id="gender"></p>
-                <p id="weight"></p>
-                <p id="height"></p>
-                <p id="phone"></p>
-                <p id="goals"></p>
-                <p id="injuries"></p>
-                <p id="medical conditions"></p>
-                <p id="Diet"></p>
-                <p id="History"></p>
-                <p id="notes" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 id="Client 2 name" class="card-title">Card title</h5>
-                <p id="plan type" class="card-text">This is a wider card with supporting text below as a natural lead-in
-                    to additional
-                    content. This content is a little bit longer.</p>
-                <p id="age"></p>
-                <p id="gender"></p>
-                <p id="weight"></p>
-                <p id="height"></p>
-                <p id="phone"></p>
-                <p id="goals"></p>
-                <p id="injuries"></p>
-                <p id="medical conditions"></p>
-                <p id="Diet"></p>
-                <p id="History"></p>
-                <p id="notes" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 id="Client 3 name" class="card-title">Card title</h5>
-                <p id="plan type" class="card-text">This is a wider card with supporting text below as a natural lead-in
-                    to additional
-                    content. This content is a little bit longer.</p>
-                <p id="age"></p>
-                <p id="gender"></p>
-                <p id="weight"></p>
-                <p id="height"></p>
-                <p id="phone"></p>
-                <p id="goals"></p>
-                <p id="injuries"></p>
-                <p id="medical conditions"></p>
-                <p id="Diet"></p>
-                <p id="History"></p>
-                <p id="notes" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
