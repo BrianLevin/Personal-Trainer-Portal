@@ -8,10 +8,11 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function (app) {
 
   // Default index renders client list page for trainer accounts (this would be permission based through passport)
+  // TITO NEEDS TO FIX THIS FUNCTION !
   app.get("/", function (req, res) {
-    db.User.findAll({}).then(function (users) {
-      console.log(users)
-      res.render("index", { user: users });
+    db.Client.findAll({}).then(function (clients) {
+      //console.log(clients)
+      res.render("index", { clientList: clients });
     });
   });
 
