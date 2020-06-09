@@ -101,7 +101,7 @@ module.exports = function (app) {
   // ------ CLIENTS API ROUTES
 
   // GET route to readall clients
-  app.get("/api/clients", function (req, res) {
+  app.get("/api/client", function (req, res) {
     db.Client.findAll({}).then(function (dbClients) {
       res.json(dbClients);
     });
@@ -127,7 +127,9 @@ module.exports = function (app) {
       history: req.body.history,
       plan_type: req.body.plan_type,
       client_photo: req.body.photoUrl,
-      UserId: req.body.user_id,
+      // PRODUCTION WILL NEED TO REQUIRE REQ.USER.ID
+      UserId: req.body.user_id
+
     }).then(function (dbClients) {
       // temporary response
       res.json(dbClients);
@@ -270,3 +272,4 @@ module.exports = function (app) {
 
 
 };
+

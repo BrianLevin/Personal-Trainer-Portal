@@ -97,7 +97,8 @@ $(document).ready(function () {
         }
     ]
 
-    seedDb(seedUsers)
+    //TITO NEEDS TO FIX THIS SEED FUNCTION
+    //seedDb(seedUsers)
 
     // Need a function that runs immediately to seed the database
     function seedDb(data) {
@@ -138,13 +139,13 @@ $(document).ready(function () {
     })
     // POST new user registration to DB
     const register = (credentials) => {
-        $.post('/api/signup', credentials, (err) => {
+        $.post('/api/signup', credentials, () => {
 
 
             // NEED TO FIGURE OUT THIS ERROR HANDLING.. IT DOESNT WORK https://api.jquery.com/ajaxError/
-            if (err) {
-                console.log('The email address already has an account tied to it')
-            }
+            // if (err) {
+            //     console.log('The email address already has an account tied to it')
+            // }
             window.location.href = "/login";
         })
     }
