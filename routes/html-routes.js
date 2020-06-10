@@ -12,7 +12,7 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     db.Client.findAll({ raw: true }).then(function (clients) {
       console.log(clients)
-      res.render("index", { clientList: clients });
+      res.render("trainer", { clientList: clients });
     });
   });
 

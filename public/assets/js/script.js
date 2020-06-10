@@ -16,17 +16,16 @@ $(document).ready(function () {
             }
         }).then(res => {
             console.log(res)
+            localStorage.setItem("user", JSON.stringify(res))
             if (res.isTrainer) {
                 window.location.href = `/`
             }
             else if (!res.isTrainer) {
                 window.location.href = `/profile/${res.id}`
             }
-
         }).fail(res => {
             console.log("no user found");
             alert("Username/Password not found. Please try again.")
-
         });
     }
 
@@ -39,7 +38,13 @@ $(document).ready(function () {
     $("#login").on("submit", (e) => {
         e.preventDefault();
         login()
-    })
+    });
+
+    $("#logout").on("click", e => {
+        localStorage.removeItem("user")
+        window.location.href = '/login'
+    });
+
 
     // DB seed data (WORK IN PROGRESS)
     let tempUsers = [
