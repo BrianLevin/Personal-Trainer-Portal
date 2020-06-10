@@ -3,6 +3,9 @@ $(document).ready(function () {
 
     // Insert front-end code here:
     $('.dropdown-trigger').dropdown();
+    $('.tabs').tabs();
+    $('.sidenav').sidenav();
+
     const login = () => {
         $.ajax({
             method: "POST",
@@ -24,8 +27,13 @@ $(document).ready(function () {
                 window.location.href = `/profile/${res.id}`
             }
         }).fail(res => {
+            console.log(res)
             console.log("no user found");
             alert("Username/Password not found. Please try again.")
+            $("#email-input").val('')
+            $("#password").val('')
+            $('label').removeClass('active')
+
         });
     }
 
@@ -120,10 +128,10 @@ $(document).ready(function () {
     ]
 
     // THIS SHOULD BE COMMENTS OUT FOR PRODUCTION
-    $('#seed-users').on('click', function () {
+    $('.seed-users').on('click', function () {
         seedUsers(tempUsers)
     })
-    $('#seed-clients').on('click', function () {
+    $('.seed-clients').on('click', function () {
         seedClients(tempUsers)
     })
     // function that seeds users to database
@@ -194,6 +202,7 @@ $(document).ready(function () {
             window.location.href = "/login";
         })
     }
-})
+
+}) // END of DOCUMENT READY
 
 
