@@ -16,7 +16,13 @@ $(document).ready(function () {
             }
         }).then(res => {
             console.log(res)
-            window.location.href = `/profile/${res.id}`;
+            if (res.isTrainer) {
+                window.location.href = `/`
+            }
+            else if (!res.isTrainer) {
+                window.location.href = `/profile/${res.id}`
+            }
+            else { };
         });
     }
 
@@ -31,7 +37,7 @@ $(document).ready(function () {
             user: {
                 email: "tjon767z@yahoo.com",
                 password: "thispassword",
-                isTrainer: false
+                isTrainer: true
             },
             client: {
                 firstName: "Tito",
