@@ -11,7 +11,7 @@
     {{!-- Proprietary Style sheet --}}
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
     {{!-- Proprietary script file  --}}
-    {{!-- <script src="/assets/js/script.js"></script> --}}
+    <script src="/assets/js/script.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>PT Client Portal</title>
 </head>
@@ -25,20 +25,19 @@
             <ul class="right hide-on-med-and-down">
                 <li><a href="#">Logout</a></li>
                 <!-- Dropdown Trigger -->
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">More<i
+                <li><a class="dropdown-trigger" href="#" data-target="dropdown1">More<i
                             class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
             <!-- Dropdown Structure -->
             <ul id="dropdown1" class="dropdown-content">
                 <li><a id="addclient" href="../add-client">Add Client</a></li>
-                <li><a id='seed-users' href="/!">Seed Users</a></li>
+                <li><a id='seed-users' href="#">Seed Users</a></li>
                 <li class="divider"></li>
-                <li><a id='seed-users' href="/">Seed Clients</a></li>
+                <li><a id='seed-clients' href="#">Seed Clients</a></li>
             </ul>
         </div>
     </nav>
     {{{ body }}}
-    <script src="/assets/js/script.js">
     </script>
 </body>
 
