@@ -196,6 +196,18 @@ $(document).ready(function () {
         })
     }
 
-}) // END of DOCUMENT READY
+    // Delete Client button
+    $(".clientDelete").on("click", (event) => {
+        event.preventDefault();
+
+        $.ajax({
+            url: `/api/Client/:id`,
+            type: 'DELETE',
+            success: function (data) {
+                //play with data
+            }
+        });
+    })
+}); // END of DOCUMENT READY
 
 
