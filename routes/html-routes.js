@@ -9,12 +9,13 @@ module.exports = function (app) {
 
   // Default index renders client list page for trainer accounts (this would be permission based through passport)
   app.get("/", function (req, res) {
+
     console.log(req.user)
     if (req.user) {
       if (req.user.isTrainer) {
         db.Client.findAll({ raw: true }).then(function (clients) {
           console.log(clients)
-          res.render("index", { clientList: clients });
+          res.render("trainer", { clientList: clients });
         });
       } else {
         res.redirect(`/profile/${req.user.id}`)

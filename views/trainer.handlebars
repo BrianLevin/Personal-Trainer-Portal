@@ -1,12 +1,10 @@
-
 {{!-- index should be our admin page for viewing all clients as a tiled or row list --}}
 
 {{!-- need a div that holds rows of clients --}}
 
 {{!-- Utilize Handlebars each method to generate first & last name, "sign-up" date ('created at' in database) link to view profile page  --}}
-
+{{> navbar user=clientList }}
 <h1>Brian's Clients</h1>
-
 <!-- Page Content -->
 <div class="row">
     {{#each clientList}}
@@ -29,12 +27,11 @@
                     <a id="add-note" href="/profile/{{this.id}}">View Profile</a>
                 </div>
                 <div>
-                    <a class="clientUpdate waves-effect waves-light btn-small" data-id="{{this.id}}">Update User</a>
-                    <a class="clientDelete waves-effect waves-light btn-small" data-id="{{this.id}}">Delete User</a>
+                    <a id="userUpdate" class="waves-effect waves-light btn-small" data-id="{{this.id}}">Update User</a>
+                    <a id="userDelete" class="waves-effect waves-light btn-small" data-id="{{this.id}}">Delete User</a>
                 </div>
             </div>
         </div>
     </div>
     {{/each}}
 </div>
-
