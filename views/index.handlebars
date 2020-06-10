@@ -8,25 +8,25 @@
 
 <!-- Page Content -->
 <div class="row">
-    {{#each clients}}
+    {{#each clientList}}
     <div class="col s4">
         <div class="card horizontal ">
             <div class="card-image">
-                <img src={{dataValues.client_photo}}>
+                <img src={{this.client_photo}}>
             </div>
             <div class="card-stacked">
                 <div class="card-content ">
-                    <h4 id="name">{{dataValues.first_name}} {{dataValues.last_name}}</h4>
-                    <p id="user_id">{{dataValues.id}}</p>
-                    <p id="plan_type">{{dataValues.plan_type}}</p>
-                    <p id="phone">{{dataValues.phone_number}}</p>
-                    <p id="email">{{dataValues.email}}</p>
+                    <h4 id="name">{{this.first_name}} {{this.last_name}}</h4>
+                    <p id="user_id">{{this.id}}</p>
+                    <p id="plan_type">{{this.plan_type}}</p>
+                    <p id="phone">{{this.phone_number}}</p>
+                    <p id="email">{{this.email}}</p>
                 </div>
                 <div class="card-action">
-                    <a id="add-note" href="/profile/{{dataValues.id}}">View Profile</a>
+                    <a id="add-note" href="/profile/{{this.id}}">View Profile</a>
                 </div>
-                <button class="userUpdate" data-id="{{dataValues.id}}">Update user</button>
-                <button class="userDelete" data-id="{{dataValues.id}}">Delete user</button>
+                <button class="userUpdate" data-id="{{this.id}}">Update user</button>
+                <button class="userDelete" data-id="{{this.id}}">Delete user</button>
             </div>
         </div>
     </div>

@@ -26,6 +26,13 @@ $(document).ready(function () {
         });
     }
 
+
+    const isloggedin = () => {
+        (req.user) ? console.log('we can use this function') : console.log('we can NOT use this function')
+        $('navbar').append('<li>Logout</li>')
+    }
+    isloggedin()
+
     $("#login").on("submit", (e) => {
         e.preventDefault();
         login()
