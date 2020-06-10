@@ -175,3 +175,11 @@ $(document).ready(function () {
     }
 
 })
+
+// Add functionality to tab on profile page
+document.addEventListener("DOMContentLoaded", function () {
+    const myTabs = document.querySelector('.tabs');
+    M.Tabs.init(myTabs, {
+        swipeable: true,
+    });
+})
