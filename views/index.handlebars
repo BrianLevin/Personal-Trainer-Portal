@@ -1,1 +1,40 @@
-<h1>This is the index page</h1>
+
+{{!-- index should be our admin page for viewing all clients as a tiled or row list --}}
+
+{{!-- need a div that holds rows of clients --}}
+
+{{!-- Utilize Handlebars each method to generate first & last name, "sign-up" date ('created at' in database) link to view profile page  --}}
+
+<h1>Brian's Clients</h1>
+
+<!-- Page Content -->
+<div class="row">
+    {{#each clientList}}
+    <div class="col s4">
+        <div class="card horizontal ">
+            <div class="card-image">
+                <img src={{this.client_photo}}>
+            </div>
+            <div class="card-stacked teal-text text-darken-3">
+                <div class="card-content ">
+                    <h4 id="name">{{this.first_name}} {{this.last_name}}</h4>
+                    <p id="user_id">User ID:{{this.id}}</p>
+                    <p id="plan_type">Plan Type:{{this.plan_type}}</p>
+                    <p id="phone">Phone:{{this.phone_number}}</p>
+                    <p id="goals">Goals:{{this.goals}}</p>
+                    <p id="injuries">Injuries:{{this.injuries}}</p>
+                </div>
+                {{!-- Buttons At Bootom of Card to View user profile, Update User and Delete User --}}
+                <div class="card-action text-teal text-darken-4">
+                    <a id="add-note" href="/profile/{{this.id}}">View Profile</a>
+                </div>
+                <div>
+                    <a class="clientUpdate waves-effect waves-light btn-small" data-id="{{this.id}}">Update User</a>
+                    <a class="clientDelete waves-effect waves-light btn-small" data-id="{{this.id}}">Delete User</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
