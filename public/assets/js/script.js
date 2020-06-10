@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     // Insert front-end code here:
-
+    $('.dropdown-trigger').dropdown();
     const login = () => {
         $.ajax({
             method: "POST",
@@ -26,12 +26,11 @@ $(document).ready(function () {
         });
     }
 
-
+    // This is here for future reference if needed. It is meant to dynamically append a logout button
     const isloggedin = () => {
-        (req.user) ? console.log('we can use this function') : console.log('we can NOT use this function')
+        // (req.user) ? console.log('we can use this function') : console.log('we can NOT use this function')
         $('navbar').append('<li>Logout</li>')
     }
-    isloggedin()
 
     $("#login").on("submit", (e) => {
         e.preventDefault();
@@ -186,17 +185,6 @@ $(document).ready(function () {
             window.location.href = "/login";
         })
     }
-
 })
 
-// Add functionality to Dropdown menu in NavBar
-const dropdownmenu = document.querySelectorAll(".dropdown-trigger");
-M.Dropdown.init(dropdownmenu, { hover: false });
 
-// Add functionality to tabs on profile page cards
-document.addEventListener("DOMContentLoaded", function () {
-    const myTabs = document.querySelector('.tabs');
-    M.Tabs.init(myTabs, {
-        swipeable: true,
-    });
-})
