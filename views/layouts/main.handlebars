@@ -27,6 +27,25 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Navbar with Dropdown Structure -->
+    <nav>
+        <div class="nav-wrapper teal">
+            <a href="#!" class="brand-logo center ">Fit Levin Training</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Logout</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="c" href="#!" data-target="dropdown1">Dropdown<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+            <!-- Dropdown Options -->
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="../add-client">Add Client</a></li>
+                <li><a id='seed-users' href="/">Seed Users</a></li>
+                <li><a id='seed-clients' href="/">Seed Clients</a></li>
+            </ul>
+        </div>
+    </nav>
     {{{ body }}}
 </body>
 
