@@ -22,7 +22,11 @@ $(document).ready(function () {
             else if (!res.isTrainer) {
                 window.location.href = `/profile/${res.id}`
             }
-            else { };
+
+        }).fail(res => {
+            console.log("no user found");
+            alert("Username/Password not found. Please try again.")
+
         });
     }
 
