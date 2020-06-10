@@ -189,7 +189,11 @@ $(document).ready(function () {
 
 })
 
-// Add functionality to tab on profile page
+// Add functionality to Dropdown menu in NavBar
+const dropdownmenu = document.querySelectorAll(".dropdown-trigger");
+M.Dropdown.init(dropdownmenu, { hover: false });
+
+// Add functionality to tabs on profile page cards
 document.addEventListener("DOMContentLoaded", function () {
     const myTabs = document.querySelector('.tabs');
     M.Tabs.init(myTabs, {
