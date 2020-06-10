@@ -8,18 +8,21 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function (app) {
 
   // Default index renders client list page for trainer accounts (this would be permission based through passport)
-  // TITO NEEDS TO FIX THIS FUNCTION !
   app.get("/", function (req, res) {
-    db.Client.findAll({ raw: true }).then(function (clients) {
-      console.log(clients)
-      res.render("index", { clientList: clients });
-    });
+    console.log(req.user)
+    if (req.user) {
+      if (req.user.isTrainer) {
+        db.Client.findAll({ raw: true }).then(function (clients) {
+          console.log(clients)
+          res.render("index", { clientList: clients });
+        });
+      } else {
+        res.redirect(`/profile/${req.user.id}`)
+      }
+    } else {
+      res.redirect(`/sign-up`)
+    }
   });
-
-  // [
-  //   Client { dataValues }
-  // ]
-
 
   // renders signup page
   app.get("/sign-up", function (req, res) {
@@ -28,9 +31,12 @@ module.exports = function (app) {
 
   // renders login page
   app.get("/login", function (req, res) {
-    if (req.user) {
-      res.redirect("https://www.google.com");
-    }
+    // if (req.user) {
+    //   if (!req.user.trainer) {
+    //     res.redirect(`/profile/${req.user}`);
+    //   }
+    //   res.redirect(`/`);
+    // }
     res.render("login");
   })
 
