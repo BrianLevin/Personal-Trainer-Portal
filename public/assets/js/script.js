@@ -16,6 +16,7 @@ $(document).ready(function () {
             }
         }).then(res => {
             console.log(res)
+            window.location.href = `/profile/${res.id}`;
         });
     }
 
