@@ -19,13 +19,13 @@ $(document).ready(function () {
             }
         }).then(res => {
             console.log(res)
-            window.location.href = `/`
-            // if (res.isTrainer) {
-            //     window.location.href = `/`
-            // }
-            // else if (!res.isTrainer) {
-            //     window.location.href = `/profile/${res.id}`
-            // }
+            localStorage.setItem("user", JSON.stringify(res))
+            if (res.isTrainer) {
+                window.location.href = `/`
+            }
+            else if (!res.isTrainer) {
+                window.location.href = `/profile/${res.id}`
+            }
         }).fail(res => {
             console.log(res)
             console.log("no user found");
@@ -33,6 +33,7 @@ $(document).ready(function () {
             $("#email-input").val('')
             $("#password").val('')
             $('label').removeClass('active')
+
         });
     }
 
@@ -45,7 +46,13 @@ $(document).ready(function () {
     $("#login").on("submit", (e) => {
         e.preventDefault();
         login()
-    })
+    });
+
+    $("#logout").on("click", e => {
+        localStorage.removeItem("user")
+        window.location.href = '/login'
+    });
+
 
     // DB seed data (WORK IN PROGRESS)
     let tempUsers = [
