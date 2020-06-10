@@ -10,11 +10,16 @@ module.exports = function (app) {
   // Default index renders client list page for trainer accounts (this would be permission based through passport)
   // TITO NEEDS TO FIX THIS FUNCTION !
   app.get("/", function (req, res) {
-    db.Client.findAll({}).then(function (clients) {
-      //console.log(clients)
+    db.Client.findAll({ raw: true }).then(function (clients) {
+      console.log(clients)
       res.render("index", { clientList: clients });
     });
   });
+
+  // [
+  //   Client { dataValues }
+  // ]
+
 
   // renders signup page
   app.get("/sign-up", function (req, res) {
