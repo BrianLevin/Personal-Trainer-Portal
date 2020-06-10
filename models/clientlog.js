@@ -4,10 +4,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        note_title: {
+            type: Date,
+            allowNull: false,
+        },
         session_note: {
             type: DataTypes.STRING,
             allowNull: false
-        },
+        }
     });
 
     // need to define relation to user model
