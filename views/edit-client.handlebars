@@ -1,8 +1,5 @@
-{{!-- form should be similar to add client but with PUT request --}}
-
-{{!-- needs the same form as add client but with different button functionality --}}
 {{> navbar }}
-<form id= "editClient">
+<form id="editClient">
     <div class="row">
         <div class="input-field col s6">
             <input value='{{ first_name }}' name='firstName' id="firstName" type="text" class="validate">
@@ -15,13 +12,6 @@
             <label class="active" for="lastName">Last Name</label>
         </div>
     </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{ UserId }}' name='user_id' id="user_id" type="text" class="validate">
-            <label class="active" for="user_id">User Id</label>
-        </div>
-    </div>
-
     <div class="row">
         <div class="input-field col s6">
             <input value='{{ age }}' name='age' id="age" type="text" class="validate">
