@@ -206,12 +206,13 @@ $(document).ready(function () {
     // Delete Client button
     $(".clientDelete").on("click", (event) => {
         event.preventDefault();
-
+        let id = $(this).data('id');
         $.ajax({
-            url: `/api/Client/:id`,
+            url: `/api/Client/${id}`,
             type: 'DELETE',
             success: function (data) {
                 //play with data
+                console.log("Client successfully deleted!")
             }
         });
     })
