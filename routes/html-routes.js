@@ -79,7 +79,7 @@ module.exports = function (app) {
 
   app.get("/profile/:id", function (req, res) {
     db.Client.findOne({
-      where: { id: req.params.id }
+      where: { UserId: req.params.id }
     }).then((client) => {
       console.log(client.dataValues)
       res.render("client-profile", client.dataValues);
