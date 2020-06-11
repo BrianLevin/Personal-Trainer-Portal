@@ -52,7 +52,37 @@ $(document).ready(function () {
         localStorage.removeItem("user")
         window.location.href = '/login'
     });
-
+    $("#editClient").on("submit", e => {
+        e.preventDefault()
+        $.ajax({
+            method: "PUT",
+            url: "/api/clients/:id",
+            data: {
+                age: $("#age").val().trim(),
+                gender: $("#gender").val().trim(),
+                user_weight: $("#user_weight").val().trim(),
+                user_height: $("#user_height").val().trim(),
+                phone_number: $("#phone_number").val().trim(),
+                goals: $("#goals").val().trim(),
+                injuries: $("#injuries").val().trim(),
+                medical_conditions: $("#medical_conditions").val().trim(),
+                diet: $("#diet").val().trim(),
+                history: $("#history").val().trim(),
+                // plan_type: $("#plan_type").val().trim(),
+            },
+            error: (req, status, error) => {
+                console.log(error)
+            }
+        }).then(res => {
+            console.log(res)
+            alert("Client info changed")
+            location.reload()
+        }).fail(res => {
+            console.log(res)
+            console.log("Failed action...");
+        }
+        )
+    })
 
     // DB seed data (WORK IN PROGRESS)
     let tempUsers = [
