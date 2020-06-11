@@ -21,33 +21,43 @@ module.exports = function (app) {
         res.redirect(`/profile/${req.user.id}`)
       }
     } else {
-      res.redirect(`/sign-up`)
+      res.redirect(`/login`)
     }
+  });
+
+  // This is a backdoor to seed db
+  app.get("/admin", function (req, res) {
+    res.render("admin")
   });
 
   // renders signup page
   app.get("/sign-up", function (req, res) {
+    if (req.user) {
+      res.redirect(`/`);
+    }
     res.render("signup");
   })
 
   // renders login page
   app.get("/login", function (req, res) {
-    // if (req.user) {
-    //   if (!req.user.trainer) {
-    //     res.redirect(`/profile/${req.user}`);
-    //   }
-    //   res.redirect(`/`);
-    // }
+    if (req.user) {
+      res.redirect(`/`);
+    }
     res.render("login");
   })
 
   app.get("/user/:id", function (req, res) {
-    db.User.findOne({
-      where: { id: req.params.id }
-    }).then((user) => {
-      console.log(user.dataValues)
-      res.render("add-client", user.dataValues);
-    })
+    if (req.user) {
+      db.User.findOne({
+        where: { id: req.params.id }
+      }).then((user) => {
+        console.log(user.dataValues)
+        res.render("add-client", user.dataValues);
+      })
+    }
+    else {
+      res.redirect('/')
+    }
   });
 
   // This was a nice experiment on joining a table in sequlize
