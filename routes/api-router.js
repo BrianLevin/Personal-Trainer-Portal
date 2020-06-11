@@ -152,9 +152,9 @@ module.exports = function (app) {
         where: {
           id: req.params.id
         }
-      }).then(function (dbClients) {
-        console.log(dbClients)
-        res.json(dbClients);
+      }).then(function (client) {
+        console.log(client)
+        res.json(client);
       });
   });
 
