@@ -236,16 +236,28 @@ $(document).ready(function () {
     // Delete Client button
     $(".clientDelete").on("click", (event) => {
         event.preventDefault();
-        let id = $(this).data('id');
-        $.ajax({
-            url: `/api/Client/${id}`,
-            type: 'DELETE',
-            success: function (data) {
-                //play with data
-                console.log("Client successfully deleted!")
-            }
-        });
+
+
     })
+
+    function deleteClient() {
+        let id = $(this).data('id');
+        if (confirm('Are you sure you want to delete this client?')) {
+            $.ajax({
+                url: `/api/Clients/${id}`,
+                type: 'DELETE',
+                success: function (data) {
+                    //play with data
+                    alert("Client successfully deleted!")
+                    location.reload()
+                }
+            });
+        }
+        return
+    }
+    $(".clientDelete").on("click", deleteClient)
+
+
 }); // END of DOCUMENT READY
 
 
