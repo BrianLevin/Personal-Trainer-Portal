@@ -1,92 +1,104 @@
 {{> navbar }}
-<form id="editClient">
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{ first_name }}' name='firstName' id="firstName" type="text" class="validate">
-            <label class="active" for="firstName">First Name</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{ last_name }}' name='lastName' id="lastName" type="text" class="validate">
-            <label class="active" for="lastName">Last Name</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{ age }}' name='age' id="age" type="text" class="validate">
-            <label class="active" for="age">Age</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{gender}}' name='gender' id="gender" type="text" class="validate">
-            <label class="active" for="gender">Gender</label>
-        </div>
-    </div>
+<div class="container">
+    <div class="row col 6 ">
+        {{!-- Page header with divider --}}
+        <div class="section">
+            <h5 class="teal-text text-darken-1">Edit Client</h5>
+            <div class="divider"></div>
+            {{!-- "Add Client Form" --}}
+            <form id="editClient">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{ first_name }}' name='firstName' id="firstName" type="text" class="validate">
+                        <label class="active" for="firstName">First Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{ last_name }}' name='lastName' id="lastName" type="text" class="validate">
+                        <label class="active" for="lastName">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{ age }}' name='age' id="age" type="text" class="validate">
+                        <label class="active" for="age">Age</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{gender}}' name='gender' id="gender" type="text" class="validate">
+                        <label class="active" for="gender">Gender</label>
+                    </div>
+                </div>
 
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{user_weight}}' name='user_weight' id="user_weight" type="text" class="validate">
-            <label class="active" for="user_weight">Weight</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{user_height}}' name='user_height' id="user_height" type="text" class="validate">
-            <label class="active" for="user_height">Height</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{phone_number}}' name='phone_number' id="phone_number" type="text" class="validate">
-            <label class="active" for="phone_number">Phone Number</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{goals}}' name='goals' id="goals" type="text" class="validate">
-            <label class="active" for="goals">Goals</label>
-        </div>
-    </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{user_weight}}' name='user_weight' id="user_weight" type="text" class="validate">
+                        <label class="active" for="user_weight">Weight</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{user_height}}' name='user_height' id="user_height" type="text" class="validate">
+                        <label class="active" for="user_height">Height</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{phone_number}}' name='phone_number' id="phone_number" type="text"
+                            class="validate">
+                        <label class="active" for="phone_number">Phone Number</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{goals}}' name='goals' id="goals" type="text" class="validate">
+                        <label class="active" for="goals">Goals</label>
+                    </div>
+                </div>
 
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{injuries}}' name='injuries' id="injuries" type="text" class="validate">
-            <label class="active" for="injuries">Injuries</label>
-        </div>
-    </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{injuries}}' name='injuries' id="injuries" type="text" class="validate">
+                        <label class="active" for="injuries">Injuries</label>
+                    </div>
+                </div>
 
 
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{medical_conditions}}' name='medical_conditions' id="medical_conditions" type="text"
-                class="validate">
-            <label class="active" for="medical_conditions">Medical Condition</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{diet}}' name='diet' id="diet" type="text" class="validate">
-            <label class="active" for="diet">Diet</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{history}}' name='history' id="history" type="text" class="validate">
-            <label class="active" for="history">History</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <input value='{{plan_type}}' name='plan_type' id="Plan_type" type="text" class="validate">
-            <label class="active" for="plan_type">Plan Type</label>
-        </div>
-    </div>
-    <div class="row">
-        <button id="submitEdit" class="btn waves-effect waves-light" data-id="{{id}}" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-        </button>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{medical_conditions}}' name='medical_conditions' id="medical_conditions"
+                            type="text" class="validate">
+                        <label class="active" for="medical_conditions">Medical Condition</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{diet}}' name='diet' id="diet" type="text" class="validate">
+                        <label class="active" for="diet">Diet</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{history}}' name='history' id="history" type="text" class="validate">
+                        <label class="active" for="history">History</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input value='{{plan_type}}' name='plan_type' id="Plan_type" type="text" class="validate">
+                        <label class="active" for="plan_type">Plan Type</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button id="submitEdit" class="btn waves-effect waves-light" data-id="{{id}}" type="submit"
+                        name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
 
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>
