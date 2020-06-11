@@ -129,9 +129,10 @@ module.exports = function (app) {
 
   // route to POST new client (takes in a jquery JSON object and uses Client model)
   app.post("/api/submit-client", function (req, res) {
-    // console.log for testing
-    console.log(req.body);
-    // create the user
+    // console logs for testing
+    // console.log(req.user)
+    // console.log(req.body);
+    // create the Client
     db.Client.create({
       first_name: req.body.firstName,
       last_name: req.body.lastName,
@@ -148,13 +149,12 @@ module.exports = function (app) {
       plan_type: req.body.plan_type,
       client_photo: req.body.photoUrl,
       // PRODUCTION WILL NEED TO REQUIRE REQ.USER.ID
-      UserId: req.body.user_id
-
+      UserId: req.user.id
     }).then(function (dbClients) {
       // temporary response
-      res.json(dbClients);
+      // res.json(dbClients);
       // ideal response is a redirect
-      // res.redirect(307, "/api/login");
+      res.redirect('/');
     })
       .catch(function (err) {
         res.status(401).json(err);
