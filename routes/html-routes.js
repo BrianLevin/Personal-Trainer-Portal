@@ -84,7 +84,8 @@ module.exports = function (app) {
       console.log(client.dataValues)
       res.render("client-profile", client.dataValues);
     }).catch(() => {
-      res.status(500).send({ error: 'Client does not exist!' })
+      res.render("add-client", { id: req.user.id })
+      // res.status(500).send({ error: `No Client page for user: ${req.user.id}` })
     })
   });
 
