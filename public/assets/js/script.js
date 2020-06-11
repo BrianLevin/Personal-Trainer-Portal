@@ -234,18 +234,29 @@ $(document).ready(function () {
     }
 
     // Delete Client button
-    $(".clientDelete").on("click", (event) => {
-        event.preventDefault();
+    const deleteClient = (id) => {
+        // e.preventDefault();
+        // let id = $(this).data('id');
+        // console.log(id)
+        if (confirm(`Are you sure you want to delete client ID ${id}?`)) {
+            $.ajax({
+                url: `/api/clients/${id}`,
+                type: 'DELETE',
+                success: function (data) {
+                    //play with data
+                    alert("Client successfully deleted!")
+                    location.reload()
+                }
+            });
+        }
+        return;
+    }
+    function getBtnVal(event) {
+        event.preventDefault()
         let id = $(this).data('id');
-        $.ajax({
-            url: `/api/Client/${id}`,
-            type: 'DELETE',
-            success: function (data) {
-                //play with data
-                console.log("Client successfully deleted!")
-            }
-        });
-    })
+        deleteClient(id)
+    }
+    $(".clientDelete").on("click", getBtnVal)
 }); // END of DOCUMENT READY
 
 
