@@ -20,12 +20,14 @@ $(document).ready(function () {
         }).then(res => {
             console.log(res)
             localStorage.setItem("user", JSON.stringify(res))
-            if (res.isTrainer) {
-                window.location.href = `/`
-            }
-            else if (!res.isTrainer) {
-                window.location.href = `/profile/${res.id}`
-            }
+            window.location.href = `/`
+            // Routing is being handled server side, commenting this out for now
+            // if (res.isTrainer) {
+            //     window.location.href = `/`
+            // }
+            // else if (!res.isTrainer) {
+            //     window.location.href = `/profile/${res.id}`
+            // }
         }).fail(res => {
             console.log(res)
             console.log("no user found");
@@ -211,8 +213,6 @@ $(document).ready(function () {
     // POST new user registration to DB
     const register = (credentials) => {
         $.post('/api/signup', credentials, () => {
-
-
             // NEED TO FIGURE OUT THIS ERROR HANDLING.. IT DOESNT WORK https://api.jquery.com/ajaxError/
             // if (err) {
             //     console.log('The email address already has an account tied to it')
