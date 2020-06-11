@@ -235,11 +235,13 @@ $(document).ready(function () {
 
     // Delete Client button
 
-    const deleteClient = () => {
-        let id = $(this).data('id');
-        if (confirm('Are you sure you want to delete this client?')) {
+    const deleteClient = (id) => {
+        // e.preventDefault();
+        // let id = $(this).data('id');
+        // console.log(id)
+        if (confirm(`Are you sure you want to delete client ID ${id}?`)) {
             $.ajax({
-                url: `/api/Clients/${id}`,
+                url: `/api/clients/${id}`,
                 type: 'DELETE',
                 success: function (data) {
                     //play with data
@@ -248,9 +250,14 @@ $(document).ready(function () {
                 }
             });
         }
-        return
+        return;
     }
-    $(".clientDelete").on("click", deleteClient)
+    function getBtnVal(event) {
+        event.preventDefault()
+        let id = $(this).data('id');
+        deleteClient(id)
+    }
+    $(".clientDelete").on("click", getBtnVal)
 
 
 }); // END of DOCUMENT READY
