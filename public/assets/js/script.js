@@ -37,6 +37,12 @@ $(document).ready(function () {
         });
     }
 
+    // This is here for future reference if needed. It is meant to dynamically append a logout button
+    const isloggedin = () => {
+        // (req.user) ? console.log('we can use this function') : console.log('we can NOT use this function')
+        $('navbar').append('<li>Logout</li>')
+    }
+
     $("#login").on("submit", (e) => {
         e.preventDefault();
         login()
@@ -46,45 +52,37 @@ $(document).ready(function () {
         localStorage.removeItem("user")
         window.location.href = '/login'
     });
-
-
-    const editClient = (event) => {
-        event.preventDefault()
-        let id = $('#submitEdit').data('id')
-        // console.log(id)
-        if (confirm('Are you sure you want to edit this client?')) {
-            $.ajax({
-                method: "PUT",
-                url: `/api/clients/${id}`,
-                data: {
-                    age: $("#age").val().trim(),
-                    gender: $("#gender").val().trim(),
-                    user_weight: $("#user_weight").val().trim(),
-                    user_height: $("#user_height").val().trim(),
-                    phone_number: $("#phone_number").val().trim(),
-                    goals: $("#goals").val().trim(),
-                    injuries: $("#injuries").val().trim(),
-                    medical_conditions: $("#medical_conditions").val().trim(),
-                    diet: $("#diet").val().trim(),
-                    history: $("#history").val().trim(),
-                    plan_type: $("#plan_type").val()
-                },
-                error: (req, status, error) => {
-                    console.log(error)
-                }
-            }).then(res => {
-                console.log(res)
-                alert("Client info changed")
-                location.reload()
-            }).fail(res => {
-                console.log(res)
-                console.log("Failed action...");
-            })
+    $("#editClient").on("submit", e => {
+        e.preventDefault()
+        $.ajax({
+            method: "PUT",
+            url: "/api/clients/:id",
+            data: {
+                age: $("#age").val().trim(),
+                gender: $("#gender").val().trim(),
+                user_weight: $("#user_weight").val().trim(),
+                user_height: $("#user_height").val().trim(),
+                phone_number: $("#phone_number").val().trim(),
+                goals: $("#goals").val().trim(),
+                injuries: $("#injuries").val().trim(),
+                medical_conditions: $("#medical_conditions").val().trim(),
+                diet: $("#diet").val().trim(),
+                history: $("#history").val().trim(),
+                // plan_type: $("#plan_type").val().trim(),
+            },
+            error: (req, status, error) => {
+                console.log(error)
+            }
+        }).then(res => {
+            console.log(res)
+            alert("Client info changed")
+            location.reload()
+        }).fail(res => {
+            console.log(res)
+            console.log("Failed action...");
         }
-    }
-    // Assign edit Client function to button
-    $("#editClient").on("submit", editClient)
-
+        )
+    })
 
     // DB seed data (WORK IN PROGRESS)
     let tempUsers = [
@@ -101,7 +99,7 @@ $(document).ready(function () {
                 gender: "Male",
                 user_weight: 160,
                 user_height: 65,
-                phone_number: "856-545-5555",
+                phone_number: "0",
                 goals: "To not be fat and pudgy",
                 injuries: "None",
                 medical_conditions: "None",
@@ -124,7 +122,7 @@ $(document).ready(function () {
                 gender: "Male",
                 user_weight: 200,
                 user_height: 70,
-                phone_number: "759-485-5555",
+                phone_number: "0",
                 goals: "Get lean",
                 injuries: "None",
                 medical_conditions: "None",
@@ -147,7 +145,7 @@ $(document).ready(function () {
                 gender: "Female",
                 user_weight: 150,
                 user_height: 64,
-                phone_number: "955-655-4545",
+                phone_number: "0",
                 goals: "Build mass",
                 injuries: "None",
                 medical_conditions: "None",
@@ -177,6 +175,7 @@ $(document).ready(function () {
         data.forEach(e => {
             addClient(e.client)
         });
+
     }
 
     // create a function to take the values of the user form and post to the db 
@@ -219,6 +218,7 @@ $(document).ready(function () {
             //     console.log('The email address already has an account tied to it')
             // }
             window.location.href = "/login";
+            return;
         })
     }
     const addClient = (clientData) => {
@@ -234,25 +234,18 @@ $(document).ready(function () {
     }
 
     // Delete Client button
-
-    const deleteClient = () => {
+    $(".clientDelete").on("click", (event) => {
+        event.preventDefault();
         let id = $(this).data('id');
-        if (confirm('Are you sure you want to delete this client?')) {
-            $.ajax({
-                url: `/api/Clients/${id}`,
-                type: 'DELETE',
-                success: function (data) {
-                    //play with data
-                    alert("Client successfully deleted!")
-                    location.reload()
-                }
-            });
-        }
-        return
-    }
-    $(".clientDelete").on("click", deleteClient)
-
-
+        $.ajax({
+            url: `/api/Client/${id}`,
+            type: 'DELETE',
+            success: function (data) {
+                //play with data
+                console.log("Client successfully deleted!")
+            }
+        });
+    })
 }); // END of DOCUMENT READY
 
 
