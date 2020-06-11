@@ -52,24 +52,42 @@ module.exports = function (app) {
   app.post("/api/signup", function (req, res) {
     // console.log for testing
     console.log(req.body);
-    // create the user
-    db.User.create({
-      email: req.body.email,
-      password: req.body.password,
-      // AJAX call can define isTrainer as true or false in the future, defaults to false
-      isTrainer: req.body.isTrainer,
-      // We need to determine the trainerId by doing a GET request for a list of all trainers when we utilize this functionality for multiple trainers. for now it should default to Brian
-      // trainer_Id: req.body.trainerId,
-    })
-      .then(function (dbUser) {
-        // temporary response
-        // res.json(dbUser);
-        // ideal response is a redirect
-        res.sendStatus(200)
+    if (req.body.email === "brian@fitlevin.com") {
+      db.User.create({
+        email: req.body.email,
+        password: req.body.password,
+        // AJAX call can define isTrainer as true or false in the future, defaults to false
+        isTrainer: true,
+        // We need to determine the trainerId by doing a GET request for a list of all trainers when we utilize this functionality for multiple trainers. for now it should default to Brian
+        // trainer_Id: req.body.trainerId,
       })
-      .catch(function (err) {
-        res.status(401).json(err);
-      });
+        .then(function (dbUser) {
+          // temporary response
+          // res.json(dbUser);
+          // ideal response is a redirect
+          res.sendStatus(200)
+        })
+        .catch(function (err) {
+          res.status(401).json(err);
+        });
+    } else {
+      // create a client user
+      db.User.create({
+        email: req.body.email,
+        password: req.body.password,
+        // AJAX call can define isTrainer as true or false in the future, defaults to false
+        // isTrainer: false,
+      })
+        .then(function (dbUser) {
+          // temporary response
+          // res.json(dbUser);
+          // ideal response is a redirect
+          res.sendStatus(200)
+        })
+        .catch(function (err) {
+          res.status(401).json(err);
+        });
+    }
   });
 
 
