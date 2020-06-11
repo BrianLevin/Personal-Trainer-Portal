@@ -88,7 +88,7 @@ module.exports = function (app) {
     })
   });
 
-  app.get("/edit/client/:id", function (req, res) {
+  app.get("/edit-client/:id", function (req, res) {
     var id = req.params.id;
     // this code could be incorrect..  //find(({id}))
     db.Client.findOne({
