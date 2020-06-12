@@ -1,18 +1,4 @@
 # Personal Trainer Portal
-![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/main.png)
-
-# Badges
-
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/BrianLevin/Personal-Trainer-Portal)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/BrianLevin/Personal-Trainer-Portal)
-
-![GitHub followers](https://img.shields.io/github/followers/BrianLevin?style=social)
-
-
-# Read_Me_Generator 
-
-     Our app allows for Personal Trainers to have a reliable tool for organizing, updating, and creating clients. The application allows for clients to log in as well, so that they can view their personal goals, history, fitness plan, and any notes their trainer has given them about their last session. The purpose of this application is to allow users to be better organized around their personal fitness. 
 
 ## Table of Contents:
 
@@ -23,15 +9,25 @@
 * [Future Deploys](#Future-Deploys)
 * [GitHub Info](#GitHub-Info)
 
+![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/main.png)
 
+# Badges
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/BrianLevin/Personal-Trainer-Portal)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/BrianLevin/Personal-Trainer-Portal)
+
+![GitHub followers](https://img.shields.io/github/followers/BrianLevin?style=social)
+
+Our app allows for Personal Trainers to have a reliable tool for organizing, updating, and creating clients. The application allows for clients to log in as well, so that they can view their personal goals, history, fitness plan, and any notes their trainer has given them about their last session. The purpose of this application is to allow users to be better organized around their personal fitness.
+
+## Link to application
+
+https://personal-trainer-portal.herokuapp.com/
 
 ## Node JS and My Thought Process 
 
 For our project, we chose to create an application for one our partners. When we originally came together as a group, we were discussing what each of us does during our free time and professionally. When Brian let us know he was a personal trainer, Tito immediately thought of a great application that could help him stay organized. Most of our other projects were COVID related. Since we didn’t want to talk about COVID anymore than we wanted to hear more about it, we decided to make an app that can help people stay focused on their heath goals and staying fit. While we were developing the app, we realized its potential, and have made it so that Brian can actually give the link out to his customers. 
-
-## Function Video 
-
-No Video this time, just a link! https://personal-trainer-portal.herokuapp.com/
 
 ## Installation
 
