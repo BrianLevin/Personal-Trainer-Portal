@@ -58,6 +58,7 @@ No Video this time, just a link! https://personal-trainer-portal.herokuapp.com/
     - ejlopez44
     - TLGeorge
     - ErikDono
+    - BrianLevin
 
     
     ``` If you would like to contribute, free to email me and ask for permission. ```
