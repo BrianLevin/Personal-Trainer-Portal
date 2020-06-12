@@ -1,4 +1,5 @@
 # Personal Trainer Portal
+![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/main.png)
 
 # Badges
 
