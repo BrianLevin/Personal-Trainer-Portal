@@ -2,7 +2,7 @@
 
 # Badges
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/BrianLevin/Personal-Trainer-Portal)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/BrianLevin/Personal-gitTrainer-Portal)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/BrianLevin/Personal-Trainer-Portal)
 
