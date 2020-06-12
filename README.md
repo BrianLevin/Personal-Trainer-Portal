@@ -85,7 +85,7 @@ No Video this time, just a link! https://personal-trainer-portal.herokuapp.com/
 
 ### Picture:
 
-![GitHubAvatar]https://avatars0.githubusercontent.com/u/40183054?s=400&u=67e112be4879fbd561aaa726873569fd1b9245ec&v=4
+![GitHubAvatar]https://avatars0.githubusercontent.com/u/40183054?s=400&u=67e112be4879fbd561aaa726873569fd1b9245ec&v=4)
 ![GitHubAvatar](https://avatars2.githubusercontent.com/u/60828138?s=400&u=c23902874c6b76dc93f6f200106b70bd0da7cd1f&v=4)
 ![GitHubAvatar](https://avatars3.githubusercontent.com/u/59715938?s=400&u=9c054f2c424cc9a24e4c8f2c76ea1e7d4c05ed90&v=4)
 ![GitHubAvatar](https://avatars2.githubusercontent.com/u/61159557?v=4) 
