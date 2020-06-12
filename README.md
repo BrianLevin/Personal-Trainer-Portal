@@ -19,7 +19,6 @@
 * [Usage](#Usage)
 * [License](#License)
 * [Contribution](#Contribution)
-* [Bugs](#Bugs)
 * [Future Deploys](#Future-Deploys)
 * [GitHub Info](#GitHub-Info)
 
@@ -63,9 +62,6 @@ No Video this time, just a link! https://personal-trainer-portal.herokuapp.com/
     
     ``` If you would like to contribute, free to email me and ask for permission. ```
 
-## Bugs:
-
-      If you find some, let us know! 
 
 ## Future Deploys:
 
