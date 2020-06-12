@@ -64,7 +64,7 @@ $(document).ready(function () {
                     medical_conditions: $("#medical_conditions").val().trim(),
                     diet: $("#diet").val().trim(),
                     history: $("#history").val().trim(),
-                    plan_type: $("#plan_type").val()
+                    plan_type: $("#plan_type").val().trim()
                 },
                 error: (req, status, error) => {
                     console.log(error)
