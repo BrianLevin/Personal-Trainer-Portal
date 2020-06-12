@@ -150,9 +150,11 @@ module.exports = function (app) {
       client_photo: req.body.photoUrl,
       // PRODUCTION WILL NEED TO REQUIRE REQ.USER.ID
       UserId: req.user.id
-    }).then(function (dbClients) {
+      // Development Seeding
+      // UserId: req.body.user_id
+    }).then(function (newClient) {
       // temporary response
-      // res.json(dbClients);
+      // res.json(newClient);
       // ideal response is a redirect
       res.redirect('/');
     })
@@ -163,7 +165,7 @@ module.exports = function (app) {
 
   // PUT client route for updating a client
   app.put("/api/clients/:id", function (req, res) {
-    console.log(req.body)
+    // console.log(`HERE IS THE REQUESTED CHANGE n\ ${req.body}`)
     db.Client.update(
       req.body,
       {
@@ -171,7 +173,7 @@ module.exports = function (app) {
           id: req.params.id
         }
       }).then(function (client) {
-        console.log(client)
+        // console.log(client)
         res.json(client);
       });
   });

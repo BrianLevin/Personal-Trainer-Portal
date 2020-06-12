@@ -21,13 +21,6 @@ $(document).ready(function () {
             console.log(res)
             localStorage.setItem("user", JSON.stringify(res))
             window.location.href = `/`
-            // Routing is being handled server side, commenting this out for now
-            // if (res.isTrainer) {
-            //     window.location.href = `/`
-            // }
-            // else if (!res.isTrainer) {
-            //     window.location.href = `/profile/${res.id}`
-            // }
         }).fail(res => {
             console.log(res)
             console.log("no user found");
@@ -35,14 +28,7 @@ $(document).ready(function () {
             $("#email-input").val('')
             $("#password").val('')
             $('label').removeClass('active')
-
         });
-    }
-
-    // This is here for future reference if needed. It is meant to dynamically append a logout button
-    const isloggedin = () => {
-        // (req.user) ? console.log('we can use this function') : console.log('we can NOT use this function')
-        $('navbar').append('<li>Logout</li>')
     }
 
     $("#login").on("submit", (e) => {
@@ -54,45 +40,64 @@ $(document).ready(function () {
         localStorage.removeItem("user")
         window.location.href = '/login'
     });
-    $("#editClient").on("submit", e => {
-        e.preventDefault()
-        $.ajax({
-            method: "PUT",
-            url: "/api/clients/:id",
-            data: {
-                age: $("#age").val().trim(),
-                gender: $("#gender").val().trim(),
-                user_weight: $("#user_weight").val().trim(),
-                user_height: $("#user_height").val().trim(),
-                phone_number: $("#phone_number").val().trim(),
-                goals: $("#goals").val().trim(),
-                injuries: $("#injuries").val().trim(),
-                medical_conditions: $("#medical_conditions").val().trim(),
-                diet: $("#diet").val().trim(),
-                history: $("#history").val().trim(),
-                // plan_type: $("#plan_type").val().trim(),
-            },
-            error: (req, status, error) => {
-                console.log(error)
-            }
-        }).then(res => {
-            console.log(res)
-            alert("Client info changed")
-            location.reload()
-        }).fail(res => {
-            console.log(res)
-            console.log("Failed action...");
+
+    const editClient = (event) => {
+        event.preventDefault()
+        let id = $('#submitEdit').data('id')
+        // This could be a faster way to do the below .val.trim method
+        // console.log(JSON.stringify($("#editClient").serializeArray()))
+        if (confirm('Are you sure you want to edit this client?')) {
+            $.ajax({
+                method: "PUT",
+                url: `/api/clients/${id}`,
+                // data: JSON.stringify($("#editClient").serializeArray()),
+                data: {
+                    first_name: $("#firstName").val().trim(),
+                    last_name: $("#lastName").val().trim(),
+                    age: $("#age").val().trim(),
+                    gender: $("#gender").val().trim(),
+                    user_weight: $("#user_weight").val().trim(),
+                    user_height: $("#user_height").val().trim(),
+                    phone_number: $("#phone_number").val().trim(),
+                    goals: $("#goals").val().trim(),
+                    injuries: $("#injuries").val().trim(),
+                    medical_conditions: $("#medical_conditions").val().trim(),
+                    diet: $("#diet").val().trim(),
+                    history: $("#history").val().trim(),
+                    plan_type: $("#plan_type").val()
+                },
+                error: (req, status, error) => {
+                    console.log(error)
+                }
+            }).then(res => {
+                console.log(res)
+                alert("Client info changed")
+                location.reload()
+            }).fail(res => {
+                console.log(res)
+                console.log("Failed action...");
+            })
         }
-        )
-    })
+    }
+
+    // Assign edit Client function to button
+    $("#editClient").on("submit", editClient)
 
     // DB seed data (WORK IN PROGRESS)
+    let admin = {
+        user: {
+            email: "brian@fitlevin.com",
+            password: "win",
+            isTrainer: false
+        }
+    }
+
     let tempUsers = [
         {
             user: {
-                email: "tjon767z@yahoo.com",
-                password: "thispassword",
-                isTrainer: true
+                email: "teets@gmail.com",
+                password: "win",
+                isTrainer: false
             },
             client: {
                 firstName: "Tito",
@@ -161,6 +166,7 @@ $(document).ready(function () {
 
     // THIS SHOULD BE COMMENTS OUT FOR PRODUCTION
     $('.seed-users').on('click', function () {
+        // register(admin)
         seedUsers(tempUsers)
     })
     $('.seed-clients').on('click', function () {
@@ -177,7 +183,6 @@ $(document).ready(function () {
         data.forEach(e => {
             addClient(e.client)
         });
-
     }
 
     // create a function to take the values of the user form and post to the db 
@@ -218,13 +223,10 @@ $(document).ready(function () {
             //     console.log('The email address already has an account tied to it')
             // }
             window.location.href = "/login";
-            return;
         })
     }
     const addClient = (clientData) => {
         $.post('/api/submit-client', clientData, () => {
-
-
             // NEED TO FIGURE OUT THIS ERROR HANDLING.. IT DOESNT WORK https://api.jquery.com/ajaxError/
             // if (err) {
             //     console.log('The email address already has an account tied to it')
