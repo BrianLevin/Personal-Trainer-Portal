@@ -25,6 +25,24 @@ Our app allows for Personal Trainers to have a reliable tool for organizing, upd
 
 https://personal-trainer-portal.herokuapp.com/
 
+## Step by step process
+This is our homepage:
+![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/homepage.png)
+
+The User will need to sign up if they don't have an account:
+![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/signup.png)
+
+ The user will put in there information once the account is created:
+   ![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/clientinfo1.png)
+    ![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/clientinfo2.png)
+   
+   The user can then sign into their newly created account:
+    ![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/login.png)
+    
+   The user can then view their profile:
+     ![Admin Trainer Page](https://github.com/BrianLevin/Personal-Trainer-Portal/blob/master/public/assets/images/finishedprofile.png)    
+      
+      
 ## Node JS and My Thought Process 
 
 For our project, we chose to create an application for one our partners. When we originally came together as a group, we were discussing what each of us does during our free time and professionally. When Brian let us know he was a personal trainer, Tito immediately thought of a great application that could help him stay organized. Most of our other projects were COVID related. Since we didn’t want to talk about COVID anymore than we wanted to hear more about it, we decided to make an app that can help people stay focused on their heath goals and staying fit. While we were developing the app, we realized its potential, and have made it so that Brian can actually give the link out to his customers. 
